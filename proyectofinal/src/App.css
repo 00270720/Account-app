@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+div{
+  background-image: url("https://www.paysandu.cl/wp-content/uploads/fiestas-patrias-surdechile-paysandu.jpg");
+}
+
+#place::placeholder {
+  color: black;
+}
+
+#holder::placeholder {
+  color: black;
+}

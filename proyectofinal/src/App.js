@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import Login from './Pages/Login';
+import User from './Pages/User';
+import Admin from './Pages/Admin';
+import ReferUser from './Pages/ReferUser';
+
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Lock from "./Components/LockRoutes"
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>        
+
+        <Route path="/user" element={<Lock role = "user" >< User/> </Lock>} />
+        <Route path="/admin" element={<Lock role = "admin" >< Admin/> </Lock>} />
+        
+        <Route path="/refer" element={<ReferUser />}/>
+
+        <Route path="*" element={<Login />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
