@@ -6,10 +6,10 @@ import AddComments from "../Components/AddComments";
 
 const Post = ({ p, username }) => {
 
-    const [showAddComment, setShowAddComment] = useState(false);
     const { title, image, description, user, likes, comments, _id } = p;
     const [liked, setLiked] = useState(likes.some((it) => it.username === username));
     const [likesCount, setLikesCount] = useState(likes.length);
+    const [commentsCount, setCommentsCount] = useState(comments.length);
     const [commentState, setCommentState] = useState(comments);
 
     function Commentpost(comment) {
@@ -32,7 +32,7 @@ const Post = ({ p, username }) => {
                 setLikesCount(likesCount - 1);
                 setLiked(false);
             }
-            
+
         }
         catch (err) {
             console.log(err)
@@ -65,13 +65,12 @@ const Post = ({ p, username }) => {
                         <span><ThumbUpIcon className="w-5  h-5 x-8" /></span>
                         { likesCount }
                     </button>
-                    <button onClick={()=> setShowAddComment(!showAddComment)} 
-                        className={` flex space-x-2 text-xs justify-center items-center mr-2 ${liked && 'text-blue-400 '}`}>
+                    <button className="flex space-x-2 text-xs justify-center items-center mr-2">
                         <span><ChatAlt2Icon className="w-5 h-5 x-8" /></span>
                         { commentState.length }
                     </button>
                 </div>
-                <div className={` ${!showAddComment && 'hidden '}`}>
+                <div>
                    { comments && comments.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}
                    <AddComments post={_id} Scomments={Commentpost} />
                 </div>
