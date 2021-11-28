@@ -59,14 +59,14 @@ const Post = ({ p, username }) => {
     }
 
     return (
-        <div className="w-screen h-96 rounded shadow-lg relative m-8 flex flex-row bg-gray-600">
-            <div className=" w-11/12 p-3">
+        <div className=" w-8/12 h-96 rounded-2xl shadow-2xl drop-shadow-2xl relative m-8 flex flex-row bg-gray-300">
+            <div className=" w-11/12 p-3 overflow-y-auto">
                 <div className="px-4">
                     <div>
                         <h2 className="font-roboto text-xl capitalize mb-2">
                             {user?.username}
                         </h2>
-                        <h2 className="font-roboto text-xl capitalize text-center ">
+                        <h2 className="font-roboto text-xl capitalize text-center border-t-4 ">
                             {title}
                         </h2>
                     </div>
@@ -92,6 +92,7 @@ const Post = ({ p, username }) => {
                         <button onClick={() => setFavpost(!Favpost)} className={`flex space-x-2 text-xs justify-center items-center w-1/2 ${Favpost && 'text-blue-400 '}`}>
                             <span><BookmarkIcon className="w-5 h-5 x-8" /></span>                   
                         </button>
+
                         <button className="flex space-x-2 text-xs justify-center items-center">
                             <span><ArrowsExpandIcon className="w-5 h-5 x-8" /></span>                      
                         </button>
@@ -102,15 +103,17 @@ const Post = ({ p, username }) => {
                             <span><EyeIcon className="w-5 h-5 x-8" /></span>                                           
                         </button>
                         </div>
-                        <div className="mt-4">
+                        <div className="mt-4 border-black">
                             <AddComments post={_id} Scomments={Commentpost} />
                         </div>
                 </div>
             </div>
-            <div className=" w-11/12 p-4 overflow-y-auto bg-gray-800">
+            <div className=" w-11/12 p-4 overflow-y-auto bg-gray-400 rounded-r-2xl">
+                <div className="flex justify-center text-white">Comentarios</div>
                 <div className="mt-4">
                     { comments && commentState.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}                      
                 </div>
+
             </div>
         </div>
     );

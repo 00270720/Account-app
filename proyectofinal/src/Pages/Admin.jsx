@@ -37,7 +37,7 @@ export default function Admin() {
     return (
             <div className="flex flex-col w-screen">
                 <div className="flex flex-row w-screen justify-around mt-8">
-                    <div className=" p-2 w-32 mb-2 bg-red-500 flex flex-row just">
+                    <div className=" p-2 w-32 mb-2 bg-transparent-dark-dark-dark-dark-dark flex flex-row just">
                         <button onClick={() => setShowAddPost(!showAddPost)}
                             type="button" className="flex text-start items-center text-white justify-center w-min">
                             Agregar un post
@@ -49,7 +49,7 @@ export default function Admin() {
                     </div>
                 <div>
                     <div className="flex justify-center mb-5">
-                        <button onClick={logoutHandler} className="rounded-lg w-32 transition border justify-center border-black duration-300 ease-in-out text-xl text-extrabold bg-gradient-to-r from-yellow-600 to-pink-500 hover:from-pink-500 hover:to-yellow-600 py-2 px-4 text-transparent-dark-dark-dark-light">
+                        <button onClick={logoutHandler} className="rounded-lg w-32 transition border justify-center border-black duration-300 ease-in-out text-xl text-extrabold border-none bg-transparent-dark-dark-dark-dark-dark hover:bg-transparent-dark-dark-dark-dark-dark-dark-dark py-2 px-4 text-transparent-dark-dark-dark-light">
                             Log out
                         </button>
                     </div>

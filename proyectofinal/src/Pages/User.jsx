@@ -35,11 +35,10 @@ export default function Admin() {
 
     }, []);
     return (
-        <div>
-            
+        <div className="mb-4 ml-4">
             <PostContainerPost username={Whoami}/>
-            <button onClick={logoutHandler} className="rounded-lg mt-8 w-full transition border border-black duration-300 ease-in-out text-xl text-extrabold bg-gradient-to-r from-yellow-600 to-pink-500 hover:from-pink-500 hover:to-yellow-600 py-2 px-4 text-transparent-dark-dark-dark-light">
-                Log out
+            <button onClick={logoutHandler} className="rounded-lg w-32 transition border justify-center border-black duration-300 ease-in-out text-xl text-extrabold border-none bg-transparent-dark-dark-dark-dark-dark hover:bg-transparent-dark-dark-dark-dark-dark-dark-dark py-2 px-4 text-transparent-dark-dark-dark-light">
+                            Log out
             </button>
         </div>
 

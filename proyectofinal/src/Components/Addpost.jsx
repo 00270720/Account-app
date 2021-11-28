@@ -30,15 +30,15 @@ const Addpost = ()  => {
         <form id="FormPost"onSubmit={onSubmit} className="space-y-4 text-center w-screen pr-80 pl-80 font-bold  ">
             <div className="flex flex-col w-max">
                 <label htmlFor="title">Titulo</label>
-                <input className="my-1 mx-32 w-max" type="text" name="title" id="title"/>
+                <input className="my-1 mx-32 w-96 pl-3 rounded bg-gray-300" type="text" name="title" id="title"/>
             </div>
             <div className="flex flex-col ">
                 <label htmlFor="description">Descripción</label>
-                <input className="my-1 mx-32" type="text" name="description" id="description"/>
+                <input className="my-1 mx-32 pl-3 rounded bg-gray-300" type="text" name="description" id="description"/>
             </div>
             <div className="flex flex-col ">
                 <label htmlFor="image">Imagen</label>
-                <input className="my-1 mx-32" type="text" name="image" id="image"/>
+                <input className="my-1 mx-32 pl-3 rounded bg-gray-300" type="text" name="image" id="image"/>
             </div>
 
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm w-auto">Enviar</button>

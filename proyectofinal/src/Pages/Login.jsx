@@ -61,7 +61,7 @@ export default function Login() {
                         Un error ha ocurrido, intenta de nuevo
                     </p>}
 
-                    <button className="animate-bounce rounded-lg mt-8 w-full transition border border-black duration-300 ease-in-out text-xl text-extrabold bg-gradient-to-r from-yellow-600 to-pink-500 hover:from-pink-500 hover:to-yellow-600 py-2 px-4 text-transparent-dark-dark-dark-light">Sign In </button>
+                    <button className="animate-bounce rounded-lg mt-8 w-full transition border border-black duration-300 ease-in-out text-xl text-extrabold bg-gradient-to-r from-green-600 to-blue-500 hover:from-blue-500 hover:to-green-600 py-2 px-4 text-transparent-dark-dark-dark-light">Sign In </button>
                     
                 
                 </form>

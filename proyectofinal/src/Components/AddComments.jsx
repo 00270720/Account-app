@@ -31,7 +31,7 @@ const AddComment = ({ post, Scomments }) => {
             <input
                 value={inputVal}
                 onChange={onChange}
-                className="px-4 py-2 w-full rounded-2xl text-gray-800 border-2 border-blue-500 text-xs"
+                className="px-4 py-2 w-full rounded-2xl text-gray-800 border-2 border-black text-xs"
                 type="text"
                 placeholder="Presiona enter para comentar"
             />
