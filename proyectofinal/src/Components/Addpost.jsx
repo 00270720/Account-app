@@ -3,8 +3,6 @@ import axios from "axios";
 const Addpost = ()  => {
     async function onSubmit(e){
         try{
-        
-
         const formdata = new FormData(e.target);
         const dat = Object.fromEntries(formdata.entries());
  
@@ -24,15 +22,15 @@ const Addpost = ()  => {
             console.log(err.response);
         }
 
-       alert("enviado");
+       
        e.target.reset();
     }
     
     return(
-        <form id="FormPost"onSubmit={onSubmit} className="space-y-4 text-center w-full pr-80 pl-80 font-bold  ">
-            <div className="flex flex-col ">
+        <form id="FormPost"onSubmit={onSubmit} className="space-y-4 text-center w-screen pr-80 pl-80 font-bold  ">
+            <div className="flex flex-col w-max">
                 <label htmlFor="title">Titulo</label>
-                <input className="my-1 mx-32" type="text" name="title" id="title"/>
+                <input className="my-1 mx-32 w-max" type="text" name="title" id="title"/>
             </div>
             <div className="flex flex-col ">
                 <label htmlFor="description">Descripción</label>
@@ -42,10 +40,7 @@ const Addpost = ()  => {
                 <label htmlFor="image">Imagen</label>
                 <input className="my-1 mx-32" type="text" name="image" id="image"/>
             </div>
-            <div className="flex flex-col ">
-                <label htmlFor="active">Post Active</label>
-                <input className=" " type="checkbox" name="active" id="active"/>
-            </div>
+
             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-sm w-auto">Enviar</button>
         </form>
     );

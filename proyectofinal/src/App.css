@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+body{
+  background-color: #61dafb;
+}
 
 .App-logo {
   height: 40vmin;
@@ -37,9 +40,6 @@
   }
 }
 
-div{
-  background-image: url("https://www.paysandu.cl/wp-content/uploads/fiestas-patrias-surdechile-paysandu.jpg");
-}
 
 #place::placeholder {
   color: black;

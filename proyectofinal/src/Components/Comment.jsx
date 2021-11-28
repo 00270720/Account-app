@@ -6,8 +6,8 @@ const Comment = ({ ch }) => {
     
     return (
         <div className="w-full border-t-4 bg-yellow-500 text-sm mb-2">
-            <h1> @{ user?.username }</h1>
-            <p>{description}</p>
+            <h1 className="text-white"> usuario: @{ user?.username }</h1>
+            <p>-{description}</p>
         </div>
     );
 };
