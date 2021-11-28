@@ -9,11 +9,12 @@ const Post = ({ p, username }) => {
     const { title, image, description, user, likes, comments, _id } = p;
     const [liked, setLiked] = useState(likes.some((it) => it.username === username));
     const [likesCount, setLikesCount] = useState(likes.length);
-    const [commentsCount, setCommentsCount] = useState(comments.length);
     const [commentState, setCommentState] = useState(comments);
 
     function Commentpost(comment) {
-        setCommentState([{...commentState, user: { username }}]);
+        const val = [...commentState, { ...comment, user: { username } }];
+
+        setCommentState(val);
     }
 
 
@@ -71,7 +72,7 @@ const Post = ({ p, username }) => {
                     </button>
                 </div>
                 <div>
-                   { comments && comments.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}
+                   { comments && commentState.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}
                    <AddComments post={_id} Scomments={Commentpost} />
                 </div>
             </div>
