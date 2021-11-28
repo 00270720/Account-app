@@ -1,35 +1,56 @@
+import React from "react";
+import { useState, useEffect } from "react";
+import PostContainer from "../Components/PostContainer";
+import { PlusIcon } from '@heroicons/react/solid';
+import Addpost from "../Components/Addpost";
 import { useUserContext } from "../Context/UserContext";
 import { useNavigate } from 'react-router-dom'
+import axios from "axios";
+
 
 export default function Admin() {
+    const [showAddPost, setShowAddPost] = useState(false);
     const navigate = useNavigate()
     const { logout } = useUserContext()
-
+    const user = localStorage.getItem('token')
+   
+    const [Whoami, setWhoami] = useState();
+    console.log(user);
     const logoutHandler = () => {
         logout()
         navigate("/login")
     }
 
-    
-    
+    useEffect(() => {
+        async function getIdentity() {
+            const { data } = await axios.get('https://posts-pw2021.herokuapp.com/api/v1//auth/whoami', {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token')
+                }
 
+            });
+            setWhoami(data.username);
+        }
+        getIdentity();
+
+    }, []);
     return (
-        <section className="flex gap-4 flex-col lg:flex-row justify-around items-center p-6 lg:p-10 min-h-screen bg-transparent-dark-dark-dark-dark-light">
-            <div className="w-4/5 lg:w-1/2 gap-6 h-full flex flex-col justify-around items-center">
-                <h2 className="text-5xl lg:text-6xl font-extrabold text-gray-800 text-center">I'm the Admin</h2>
-                <h3 className="text-lg font-medium text-gray-700 text-center">Only the admin or the users with this role can see this page</h3>
-
-                <p className="text-xl font-medium text-black text-center mt-6">If you want to see this page you must ask for permission to the admin</p>
-                <p className="text-xl font-medium text-black text-center mt-6">Please click the button below to get back</p>
-
-                <button onClick={ logoutHandler } className="mt-6 w-1/2 lg:w-1/3 transition rounded border border-blue-500 duration-300 ease-in-out text-lg text-extrabold uppercase bg-transparent-dark-dark-dark-dark-dark hover:bg-transparent-dark-dark-dark-dark-dark-light py-2 px-4 text-gray-100">Log out</button>
+        <div>
+            <div className="mb-2">
+                <button onClick={() => setShowAddPost(!showAddPost)}
+                    type="button" className="flex text-center items-center text-white justify-center w-full">
+                    Agregar un post
+                    <PlusIcon className="ml-2 w-6 h-6 stroke mr-20  x-8 text-center items-center" />
+                </button>
+                {showAddPost && <Addpost />}
             </div>
+            <PostContainer username={Whoami}/>
+            <button onClick={logoutHandler} className="rounded-lg mt-8 w-full transition border border-black duration-300 ease-in-out text-xl text-extrabold bg-gradient-to-r from-yellow-600 to-pink-500 hover:from-pink-500 hover:to-yellow-600 py-2 px-4 text-transparent-dark-dark-dark-light">
+                Log out
+            </button>
+        </div>
 
-            <div className="w-4/5 lg:w-1/2 flex justify-center items-center">
-            </div>
-        </section>
 
-        
+
     )
-
 }
