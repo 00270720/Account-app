@@ -3,29 +3,33 @@ import axios from "axios";
 const Addpost = ()  => {
     async function onSubmit(e){
         try{
-        e.preventDefault();
+        
 
         const formdata = new FormData(e.target);
         const dat = Object.fromEntries(formdata.entries());
  
         if (dat.title === '' || dat.description === '') return alert('El titulo y la descripcion son campos obligarios');
 
-        
-            
+   
         
         const res = await axios.post('https://posts-pw2021.herokuapp.com/api/v1/post/create', {...dat, active: dat.active === 'on'},{
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('token')
             },
+            
         });
 
         console.log(res);}
         catch(err){
             console.log(err.response);
         }
+
+       alert("enviado");
+       e.target.reset();
     }
+    
     return(
-        <form onSubmit={onSubmit} className="space-y-4 text-center w-full pr-80 pl-80 font-bold  ">
+        <form id="FormPost"onSubmit={onSubmit} className="space-y-4 text-center w-full pr-80 pl-80 font-bold  ">
             <div className="flex flex-col ">
                 <label htmlFor="title">Titulo</label>
                 <input className="my-1 mx-32" type="text" name="title" id="title"/>
