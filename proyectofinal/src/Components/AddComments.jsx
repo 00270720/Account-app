@@ -7,20 +7,20 @@ const AddComment = ({ post, Scomments }) => {
     function onChange(e) {
         setInputVal(e.target.value);
     }
-
+    
     async function onSubmit(e) {
         e.preventDefault();
-
+        
         const body = {
             description: inputVal,
         };
-
+        
         await axios.patch(`https://posts-pw2021.herokuapp.com/api/v1/post/comment/${post}`, body, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         });
-
+        
         setInputVal('');
 
         Scomments(body);

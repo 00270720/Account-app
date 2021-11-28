@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChatAlt2Icon, ThumbUpIcon } from '@heroicons/react/solid';
+import { ChatAlt2Icon, ThumbUpIcon, BookmarkIcon } from '@heroicons/react/solid';
 import axios from "axios";
 import Comment from "../Components/Comment";
 import AddComments from "../Components/AddComments";
@@ -10,7 +10,7 @@ const Post = ({ p, username }) => {
     const [liked, setLiked] = useState(likes.some((it) => it.username === username));
     const [likesCount, setLikesCount] = useState(likes.length);
     const [commentState, setCommentState] = useState(comments);
-
+    const [Favpost, setFavpost] = useState(false);
     function Commentpost(comment) {
         const val = [...commentState, { ...comment, user: { username } }];
 
@@ -70,9 +70,12 @@ const Post = ({ p, username }) => {
                         <span><ChatAlt2Icon className="w-5 h-5 x-8" /></span>
                         { commentState.length }
                     </button>
+                    <button onClick={() => setFavpost(!Favpost)} className={`flex space-x-2 text-xs justify-center items-center w-1/2 ${Favpost && 'text-blue-400 '}`}>
+                        <span><BookmarkIcon className="w-5 h-5 x-8" /></span>                   
+                    </button>
                 </div>
-                <div>
-                   { comments && commentState.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}
+                <div className="mt-4">
+                   { comments && commentState.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}                      
                    <AddComments post={_id} Scomments={Commentpost} />
                 </div>
             </div>

@@ -10,7 +10,7 @@ const PostContainer = ({username}) => {
 
     useEffect(() => {
         async function getPost() {
-            const { data: result } = await axios.get(`https://posts-pw2021.herokuapp.com/api/v1/post/owned?limit=${15}&page=${0}`, {
+            const { data: result } = await axios.get(`https://posts-pw2021.herokuapp.com/api/v1/post/all?limit=${10}&page=${0}`, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token')
                 },

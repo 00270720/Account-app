@@ -15,7 +15,7 @@ export default function Admin() {
     const user = localStorage.getItem('token')
    
     const [Whoami, setWhoami] = useState();
-    console.log(user);
+    
     const logoutHandler = () => {
         logout()
         navigate("/login")
