@@ -90,7 +90,7 @@ const Post = ({ p, username }) => {
             <div className=" w-11/12 p-3 overflow-y-auto">
                 <div className="px-4">
                     <div>
-                        <h2 className="font-roboto text-xl capitalize mb-2">
+                        <h2 className="font-roboto text-xl capitalize mb-2 font-semibold">
                             {user?.username}
                         </h2>
                         <h2 className="font-roboto text-xl capitalize text-center border-t-4 ">

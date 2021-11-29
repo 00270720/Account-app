@@ -27,7 +27,6 @@ export default function Login() {
     }
 
     if (token) {
-        console.log("Ya se loggea")
         return <Navigate to="/refer" />
          }
     //Aqui se le pedirá las credenciales, si digita alguna de las credenciales incorrectas, se muestra un mensaje de error

@@ -8,16 +8,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Lock from "./Components/LockRoutes"
 
 
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>        
-
+        <Route path="/login" element={<Login />} /> 
         <Route path="/user" element={<Lock role = "user" >< User/> </Lock>} />
         <Route path="/admin" element={<Lock role = "admin" >< Admin/> </Lock>} />
-        <Route path="/NotFound" element={<NotFound />}/>
         <Route path="/refer" element={<ReferUser />}/>
-        <Route path="*" element={<Login />}/>
+        <Route path="*" element={<NotFound />}/>
       </Routes>
     </BrowserRouter>
   );
