@@ -32,11 +32,11 @@ export default function User() {
     }, []);
     return (
         <div className="mb-4 ml-4">
-            <PostContainerPost username={Whoami}/>
-            <button onClick={logoutHandler} className="rounded-lg w-32 transition border justify-center border-black duration-300 ease-in-out text-xl text-extrabold border-none bg-transparent-dark-dark-dark-dark-dark hover:bg-transparent-dark-dark-dark-dark-dark-dark-dark py-2 px-4 text-transparent-dark-dark-dark-light">
-                            Log out
+            <button onClick={logoutHandler} className="rounded-lg w-32 transition border justify-center border-black duration-300 ease-in-out text-xl text-extrabold border-none bg-transparent-dark-dark-dark-dark-dark hover:bg-transparent-dark-dark-dark-dark-dark-dark-dark py-2 px-4 text-transparent-dark-dark-dark-light m-5">
+                Log out
             </button>
+            <PostContainerPost username={Whoami}/>
+            
         </div>
-
     )
 }

@@ -4,22 +4,22 @@ import Admin from './Pages/Admin';
 import ReferUser from './Pages/ReferUser';
 import NotFound from './Pages/NotFound';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Lock from "./Components/LockRoutes"
 
 
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>        
         <Route path="/login" element={<Login />} /> 
         <Route path="/user" element={<Lock role = "user" >< User/> </Lock>} />
         <Route path="/admin" element={<Lock role = "admin" >< Admin/> </Lock>} />
         <Route path="/refer" element={<ReferUser />}/>
-        <Route path="*" element={<NotFound />}/>
+        <Route path="*" element={<Login />}/>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

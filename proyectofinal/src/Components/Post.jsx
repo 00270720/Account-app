@@ -2,7 +2,6 @@ import React, { useState } from "react";import { ChatAlt2Icon, ThumbUpIcon, Book
 import axios from "axios";
 import Comment from "../Components/Comment";
 import AddComments from "../Components/AddComments";
-import { Navigate, useNavigate } from 'react-router-dom';
 
 const Post = ({ p, username }) => {
 
@@ -11,11 +10,6 @@ const Post = ({ p, username }) => {
     const [likesCount, setLikesCount] = useState(likes.length);
     const [commentState, setCommentState] = useState(comments);
     const [Favpost, setFavpost] = useState(false);
-    const navigate = useNavigate();
-
-    const onClick = (e) => {
-        navigate(`/updateposting/${_id}`)
-    }
 
     async function toggle(e) {
         e.preventDefault();
@@ -71,14 +65,7 @@ const Post = ({ p, username }) => {
                 },
             });
 
-            if (!liked) {
-                setLikesCount(likesCount + 1);
-                setLiked(true);
-            } else {
-                setLikesCount(likesCount - 1);
-                setLiked(false);
-            }
-
+            
         }
         catch (err) {
             console.log(err)
@@ -118,13 +105,6 @@ const Post = ({ p, username }) => {
                         </button>
                         <button onClick={() => setFavpost(!Favpost)} className={`flex space-x-2 text-xs justify-center items-center w-1/2 ${Favpost && 'text-blue-400 '}`}>
                             <span><BookmarkIcon className="w-5 h-5 x-8" /></span>                   
-                        </button>
-
-                        <button className="flex space-x-2 text-xs justify-center items-center">
-                            <span><ArrowsExpandIcon className="w-5 h-5 x-8" /></span>                      
-                        </button>
-                        <button onClick={(e) => onClick(e)} className="flex space-x-2 text-xs justify-center items-center">
-                            <span><PencilAltIcon className="w-5 h-5 x-8" /></span>                    
                         </button>
                         <button onClick={toggle} className="flex space-x-2 text-xs justify-center items-center ">
                             <span><EyeIcon className="w-5 h-5 x-8" /></span>                                           
