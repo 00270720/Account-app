@@ -1,19 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import PostContainerPost from "../Components/PostContainerPost";
-import { PlusIcon } from '@heroicons/react/solid';
-import Addpost from "../Components/Addpost";
 import { useUserContext } from "../Context/UserContext";
 import { useNavigate } from 'react-router-dom'
 import axios from "axios";
 
 
-export default function Admin() {
+export default function User() {
     const [showAddPost, setShowAddPost] = useState(false);
     const navigate = useNavigate()
-    const { logout } = useUserContext()
-    
-   
+    const { logout } = useUserContext();
     const [Whoami, setWhoami] = useState();
     
     const logoutHandler = () => {
@@ -41,8 +37,6 @@ export default function Admin() {
                             Log out
             </button>
         </div>
-
-
 
     )
 }

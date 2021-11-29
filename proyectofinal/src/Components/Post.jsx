@@ -2,7 +2,7 @@ import React, { useState } from "react";import { ChatAlt2Icon, ThumbUpIcon, Book
 import axios from "axios";
 import Comment from "../Components/Comment";
 import AddComments from "../Components/AddComments";
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const Post = ({ p, username }) => {
 
@@ -11,6 +11,11 @@ const Post = ({ p, username }) => {
     const [likesCount, setLikesCount] = useState(likes.length);
     const [commentState, setCommentState] = useState(comments);
     const [Favpost, setFavpost] = useState(false);
+    const navigate = useNavigate();
+
+    const onClick = (e) => {
+        navigate(`/updateposting/${_id}`)
+    }
 
     async function toggle(e) {
         e.preventDefault();
@@ -39,6 +44,28 @@ const Post = ({ p, username }) => {
     async function likePost() {
         try {
             const { data } = await axios.patch(`https://posts-pw2021.herokuapp.com/api/v1/post/like/${_id}`, null, {
+                headers: {
+                    Authorization: 'Bearer ' + localStorage.getItem('token'),
+                },
+            });
+
+            if (!liked) {
+                setLikesCount(likesCount + 1);
+                setLiked(true);
+            } else {
+                setLikesCount(likesCount - 1);
+                setLiked(false);
+            }
+
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    async function addfavorites() {
+        try {
+            const { data } = await axios.patch(`https://posts-pw2021.herokuapp.com/api/v1/post/fav/${_id}`, null, {
                 headers: {
                     Authorization: 'Bearer ' + localStorage.getItem('token'),
                 },
@@ -96,7 +123,7 @@ const Post = ({ p, username }) => {
                         <button className="flex space-x-2 text-xs justify-center items-center">
                             <span><ArrowsExpandIcon className="w-5 h-5 x-8" /></span>                      
                         </button>
-                        <button className="flex space-x-2 text-xs justify-center items-center">
+                        <button onClick={(e) => onClick(e)} className="flex space-x-2 text-xs justify-center items-center">
                             <span><PencilAltIcon className="w-5 h-5 x-8" /></span>                    
                         </button>
                         <button onClick={toggle} className="flex space-x-2 text-xs justify-center items-center ">
@@ -113,7 +140,6 @@ const Post = ({ p, username }) => {
                 <div className="mt-4">
                     { comments && commentState.map((item) => (<Comment key={new Date().toISOString} ch={item}/>))}                      
                 </div>
-
             </div>
         </div>
     );

@@ -4,7 +4,8 @@ import PostContainer from "../Components/PostContainer";
 import { PlusIcon } from '@heroicons/react/solid';
 import Addpost from "../Components/Addpost";
 import { useUserContext } from "../Context/UserContext";
-import { useNavigate } from 'react-router-dom'
+import PostContainerPost from "../Components/PostContainerPost";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 
@@ -13,7 +14,8 @@ export default function Admin() {
     const navigate = useNavigate()
     const { logout } = useUserContext()
     const user = localStorage.getItem('token')
-   
+    const [showOwn, setShowOwn] = useState(false);
+    const [showall, setShowall] = useState(false);
     const [Whoami, setWhoami] = useState();
     
     const logoutHandler = () => {
@@ -37,7 +39,7 @@ export default function Admin() {
     return (
             <div className="flex flex-col w-screen">
                 <div className="flex flex-row w-screen justify-around mt-8">
-                    <div className=" p-2 w-32 mb-2 bg-transparent-dark-dark-dark-dark-dark flex flex-row just">
+                    <div className=" p-2 w-32 mb-2 bg-transparent-dark-dark-dark-dark-dark flex flex-row ">
                         <button onClick={() => setShowAddPost(!showAddPost)}
                             type="button" className="flex text-start items-center text-white justify-center w-min">
                             Agregar un post
@@ -55,8 +57,23 @@ export default function Admin() {
                     </div>
                 </div>
             </div>
-            <div className="">
-                <PostContainer username={Whoami}/>
+            <div className="flex bg-yellow-100 justify-center h-11">
+                <div className="mr-4 w-80">
+                    <button onClick={() => setShowOwn(!showOwn)} className="flex text-start items-center justify-center w-full h-full bg-red-600 hover:bg-gray-900 text-white ml-4 ">     
+                        Mostrar mis posts            
+                    </button>
+                </div>
+                <div className="mr-4 w-80">
+                    <button onClick={() => setShowall(!showall)} className="flex text-start items-center justify-center w-full h-full bg-red-600 hover:bg-gray-900 text-white ml-4 ">     
+                        Mostrar todos los posts          
+                    </button>
+                </div>
+            </div>
+            <div>
+                {showOwn && <PostContainer username={Whoami}/>}
+            </div>
+            <div>
+                    {showall && <PostContainerPost username={Whoami}/>}
             </div>
         </div>
     )

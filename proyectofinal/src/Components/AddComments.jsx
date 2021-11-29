@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 const AddComment = ({ post, Scomments }) => {
+    
     const [inputVal, setInputVal] = useState('');
 
     function onChange(e) {
@@ -20,7 +21,7 @@ const AddComment = ({ post, Scomments }) => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
         });
-        
+
         setInputVal('');
 
         Scomments(body);
