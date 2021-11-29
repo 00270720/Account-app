@@ -53,14 +53,14 @@ const PostContainer = ({username}) => {
                 )
             }
             </div>
-            <div className="flex bg-yellow-100 justify-center h-11">
-                <div className="mr-4 w-80">
-                    <button onClick={PreviousBtn} className="flex text-start items-center justify-center w-full h-full bg-red-600 hover:bg-gray-900 text-white ml-4 ">     
+            <div className="flex justify-around h-11 m-5">
+                <div className="mr-4 w-80 rounded-lg shadow-2xl">
+                    <button onClick={PreviousBtn} className="flex text-start rounded-lg shadow-2xl items-center justify-center w-full h-full bg-red-600 hover:bg-gray-900 text-white ml-4 ">     
                         Atras           
                     </button>
                 </div>
-                <div className="mr-4 w-80">
-                    <button onClick={NextBtn} className="flex text-start items-center justify-center w-full h-full bg-red-600 hover:bg-gray-900 text-white ml-4 ">     
+                <div className="mr-4 w-80 rounded-lg shadow-2xl">
+                    <button onClick={NextBtn} className="flex text-start rounded-lg shadow-2xl items-center justify-center w-full h-full bg-red-600 hover:bg-gray-900 text-white ml-4 ">     
                         Siguiente          
                     </button>
                 </div>
