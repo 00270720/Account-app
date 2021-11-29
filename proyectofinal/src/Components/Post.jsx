@@ -131,7 +131,7 @@ const Post = ({ p, username }) => {
                         </button>
                         </div>
                         <div className="mt-4 border-black">
-                            <AddComments id_value={_id} Scomments={Commentpost} />
+                            <AddComments id_value={_id} id_comment={Commentpost} />
                         </div>
                 </div>
             </div>

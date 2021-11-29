@@ -1,12 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
-<<<<<<< HEAD
-const AddComment = ({ post, Scomments }) => {
-    
-=======
 const AddComment = ({ id_value, id_comment }) => {
->>>>>>> 238047846a3e73d22dfd712e8db0f58131c6957b
     const [inputVal, setInputVal] = useState('');
 
     function onChange(e) {
