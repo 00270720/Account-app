@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
+<<<<<<< HEAD
 const AddComment = ({ post, Scomments }) => {
     
+=======
+const AddComment = ({ id_value, id_comment }) => {
+>>>>>>> 238047846a3e73d22dfd712e8db0f58131c6957b
     const [inputVal, setInputVal] = useState('');
 
     function onChange(e) {
@@ -12,11 +16,11 @@ const AddComment = ({ post, Scomments }) => {
     async function onSubmit(e) {
         e.preventDefault();
         
-        const body = {
+        const shape = {
             description: inputVal,
         };
         
-        await axios.patch(`https://posts-pw2021.herokuapp.com/api/v1/post/comment/${post}`, body, {
+        await axios.patch(`https://posts-pw2021.herokuapp.com/api/v1/post/comment/${id_value}`, shape, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
             },
@@ -24,7 +28,7 @@ const AddComment = ({ post, Scomments }) => {
 
         setInputVal('');
 
-        Scomments(body);
+        id_comment(shape);
     }
 
     return (
